@@ -1,14 +1,12 @@
 const qrcode = require("qrcode-terminal");
 const { Client, LocalAuth } = require("whatsapp-web.js");
-//sda
+
 let isAuthenticated = false;
 let qrCode = null;
 
 const whatsapp = new Client({
   puppeteer: {
     headless: false,
-    executablePath:
-      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   },
   authStrategy: new LocalAuth(),
