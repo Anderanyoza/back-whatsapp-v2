@@ -6,14 +6,14 @@ let qrCode = null;
 
 const whatsapp = new Client({
   puppeteer: {
-    headless: false,
+    headless: true, // Render no tiene entorno gráfico
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   },
   authStrategy: new LocalAuth(),
 });
 
 whatsapp.on("qr", (qr) => {
-  qrCode = qr; // Guardamos el QR dinámicamente
+  qrCode = qr;
   isAuthenticated = false;
   qrcode.generate(qr, { small: true });
   console.log("📲 Escanea el código QR en WhatsApp Web.");
@@ -21,7 +21,7 @@ whatsapp.on("qr", (qr) => {
 
 whatsapp.on("ready", () => {
   isAuthenticated = true;
-  qrCode = null; // Borra el QR ya que ya está autenticado
+  qrCode = null;
   console.log("✅ WhatsApp Web conectado y listo.");
 });
 
