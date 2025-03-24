@@ -32,7 +32,7 @@ whatsapp.on("disconnected", (reason) => {
 });
 
 whatsapp.initialize();
-
+//cambios
 module.exports = {
   whatsapp,
   getIsAuthenticated: () => isAuthenticated,
